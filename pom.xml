@@ -39,6 +39,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
@@ -102,6 +103,20 @@
     <groupId>org.slf4j</groupId>
     <version>1.7.5</version>
 </dependency>
-
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>
+                regressionTest
+            </id>
+            <properties>
+                <fileName>
+                    ${basedir}/src/test/runRegressionTest.xml
+                </fileName>
+            </properties>
+
+
+    </profile>
+    </profiles>
 </project>

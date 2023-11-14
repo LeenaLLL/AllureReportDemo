@@ -20,6 +20,7 @@ public class LoginPage extends BasePage{
     public WebElement errMessage;
     @FindBy(id="USER_REMEMBER")
     public WebElement rememberMe;
+
     @FindBy(xpath = "//input[@type='password']")
     public WebElement attribute;
     @FindBy(xpath = "//input[@name='USER_LOGIN']")
@@ -58,7 +59,6 @@ public class LoginPage extends BasePage{
 
     @Step("Verify that the user can log in with valid credentials ")
     public void verifySuccessfulLogin() {
-
         Assert.assertTrue(Driver.getDriver().getTitle().contains("Portal") );
     }
     @Step("Verify that the user can log in with invalid credentials ")

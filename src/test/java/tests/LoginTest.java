@@ -9,13 +9,13 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import utilities.Driver;
+import utilities.Groups;
 
 
 @Feature("Login Features")
-@Story("As a user, I should be able to login")
 public class LoginTest extends TestBase {
 
-    @Test
+    @Test(groups = Groups.REGRESSION)
     @Severity(SeverityLevel.CRITICAL)
     @Description("Verify that the user can log in with valid credentials ")
     public void verifyLoginWithValidCredentials() {
@@ -23,7 +23,6 @@ public class LoginTest extends TestBase {
                 .loginAsUserType("hr")
                 .verifySuccessfulLogin();
     }
-
 
     @DataProvider(name = "invalidCredentials")
     public Object[][] invalidCredentials() {
@@ -35,16 +34,16 @@ public class LoginTest extends TestBase {
         };
     }
 
-    @Test(dataProvider = "invalidCredentials")
-    @Severity(SeverityLevel.CRITICAL) @Owner("Leena") @Tag("smoke")
-    @TmsLink("CRMLY10-2")
-    @Description("Verify that the user can log in with valid credentials ")
+    @Test(dataProvider = "invalidCredentials", groups = Groups.REGRESSION)
+    @Severity(SeverityLevel.CRITICAL)
+
     public void verifyLoginWithInvalidCredentials(String username, String password) {
         new LoginPage()
                 .login(username, password)
                 .verifyUnsuccessfulLogin();
     }
 
+    @Test(groups = Groups.REGRESSION)
     @Severity(SeverityLevel.CRITICAL)
     @Description("Verify that remember me link is clickable")
     public void verifyRememberMeLinkIsClickable() {
